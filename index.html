@@ -7,77 +7,102 @@
 
 <body>
 
-<!-- Display "press any key to get started," "Wins," "#of guesses remaining" -->
+<!-- Display Text -->
 <div>
-    <p id="anykey-text">Press any key to get started!</p>
-    <p id="userchoice-text"></p>
-    <p id="wins-text"></p>
-    <p id="losses-text"></p>
-    <p id="guessed-text"></p>
-    <p id="guessremaining-text"></p>
+    <p id="start">Press any key to get started!</p>
+    <p id="choice"></p>
+    <p id="wins"></p>
+    <p id="losses"></p>
+    <p id="guessed"></p>
+    <p id="guessesLeft"></p>
 </div>
 
-<script type="text/javascript">
+<script>
+
+//user starts game
+    document.onkeyup = function(event) {
+        var userChoice = event.key;
+
+    //create scoreboard variables
+        var wins = 0;
+        var losses = 0;
+        var guessed = 0;
+        var guessesLeft = 15;
+
+    //create variables to display directions & scoreboard items
+        var startText = document.getElementById.innerHTML("start");
+        var choiceText = document.getElementById.innerHTML("choice");
+        var winsText = document.getElementById.innerHTML("wins");
+        var lossesText = document.getElementById.innerHTML("losses");
+        var guessedText = document.getElementById.innerHTML("guessed");
+        var guessesLeftText = document.getElementById.innerHTML("guessesLeft")
+
+    //show scoreboard variables
+        
 
 
-//Pick a random word
-var computerChoice = ["knight", "lord", "feudal", "plague", "bishop", "religion", "witchhunt", 
-                    "inquisition", "peasant", "witch", "camelot", "arthur", "druid",
-                    "merlin", "wizard", "morgana", "goblet", "poison", "borgias", "dragon",
-                     "watery-bint", "coconuts", "elderberries", "european-swallow", "lancelot",
-                    "sir", "majesty", "fleshwound", "sword", "holygrail"];
 
-//Computer chooses word
-var word = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-alert(word);
-
-//Creates the underscores for secret word
-var secretWord = [];
-for (var i = 0; i < word.length; i++) {
-    secretWord[i] = "_";
-}
-
-//Display secret word
-alert(secretWord);
-
-var choiceletter = "a";
-
-for (var i = 0; i < word.length; i++) {
-   if (word[i] === choiceletter) {
-       alert("choiceletter is in the word!");
-   }
-}
-
-
-//Game Code
-    //display directions to start game
-    //user starts game
     //hide directions
+        start.textContent = "";
+ 
     //computer chooses word
-    //computer illustrates secret word with blank underscores
+        var computerChoice = ["knight", "lord", "feudal", "plague", "bishop", "religion", "witchhunt", 
+                            "inquisition", "peasant", "witch", "camelot", "arthur", "druid",
+                            "merlin", "wizard", "morgana", "goblet", "poison", "borgias", "dragon",
+                            "watery-bint", "coconuts", "elderberries", "european-swallow", "lancelot",
+                            "sir", "majesty", "fleshwound", "sword", "holygrail"];
+
+
+        var word = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+        alert(word);
+
+    //computer illustrates secret word with underscores
+    //Creates the underscores 
+        var secretWord = [];
+        for (var i = 0; i < word.length; i++) {
+            secretWord[i] = "_";
+        }
+
+    //Display secret word
+        alert(secretWord);
+
     //user inputs letter
+        var choiceletter = "a";
+
+    //code determines if letter is in word
+        for (var i = 0; i < word.length; i++) {
+            if (word[i] === choiceletter) {
+            alert("choiceletter is in the word!");
+            }
+        }
+    //if user guesses word correctly, it tallies up as a win
+    function wins++
     //if letter is correct, it reveals letter in word
     //if letter is incorrect, it displays under incorrect guesses & takes away a guess
     //tracks letters already guessed
-    //if user guesses word correctly, it tallies up as a win
+    //computer chooses another word to play
+
+
+    
+
+
+}
+
+</script>
+</body>
+</html>
 
 
 
 
-//Create variables to hold # of wins, losses, incorrect guesses, and guesses remaining
-// var wins = 0;
-// var losses = 0;
-// var guessed = 0;
-// var guessremaining = 15;
 
-
-//Create variables to hold references to display items 
-// var anyKeyText = document.getElementById("anykey-text");
-// var userChoiceText = document.getElementById("userchoice-text");
-// var winsText = document.getElementById("wins-text");
-// var lossesText = document.getElementById("losses-text");
-// var guessedText = document.getElementById("guessed-text");
-// var guessRemainingText = document.getElementById("guessremaining-text");
+<!-- //Create variables to hold references to display items 
+// var start = document.getElementById("");
+// var choice = document.getElementById("userchoice-text");
+// var wins = document.getElementById("wins-text");
+// var losses = document.getElementById("losses-text");
+// var guessed = document.getElementById("guessed-text");
+// var guessesLeft = document.getElementById("guessremaining-text");
 
 
 //Use key events to listen for the letters the players will type
@@ -85,24 +110,19 @@ for (var i = 0; i < word.length; i++) {
 //     var userChoice = event.key;
 
 // }
+// ---------------------------------------------------
+//  //Display scoreboard
+// useChoiceText.textContent = "You chose: " + userChoice;
+// winsText.textContent = "Wins: " + wins;
+// lossesText.textContent = "Losses: " + losses;
+// guessedText.textContent = "You guess: " + guessed;
+// guessRemainingText.textContent = "Guesses remaining: " + guessesremaining
 
 
+//-----------------------------------------------------------------
+ --> 
 
-//Display
-    //Hide the directions
-    // anyKeyText.textContent = "";
 
-    //Display guesses, letters remaining, wins/losses/ties
-//     userChoiceText = "You chose: " + userChoice;
-//     winsText = " Wins: " + wins;
-//     lossesText = "Losses: " + losses;
-//     guessedText = "You guessed: " + guessed;
-//     guessRemainingText = "Guesses remaining: " + guessesremaining;
-// }
-
-// }
-
-//After the user wins/loses the game should choose another word and make the user play it
     
     
     
@@ -112,5 +132,4 @@ for (var i = 0; i < word.length; i++) {
     
     
     
-    
-    </script>
+  
