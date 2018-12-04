@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Medieval Word Game</title>
+  </head>
+
+<body>
+
+<!-- Display "press any key to get started," "Wins," "#of guesses remaining" -->
+<div>
+    <p id="anykey-text">Press any key to get started!</p>
+    <p id="userchoice-text"></p>
+    <p id="wins-text"></p>
+    <p id="losses-text"></p>
+    <p id="guessed-text"></p>
+    <p id="guessremaining-text"></p>
+</div>
+
+<script type="text/javascript">
+
+
+//Pick a random word
+var computerWords = ["knight", "lord", "feudal", "plague", "bishop", "religion", "witchhunt", 
+                    "inquisition", "peasant", "witch", "camelot", "arthur", "druid",
+                    "merlin", "wizard", "morgana", "goblet", "poison", "borgias", "dragon",
+                     "watery-bint", "coconuts", "elderberries", "european-swallow", "lancelot",
+                    "sir", "majesty", "fleshwound", "sword", "holygrail"];
+
+//Computer chooses word
+var word = computerWords[Math.floor(Math.random() * computerWords.length)];
+
+//Create an answer array
+var answerArray = [];
+for (var i = 0; i < word.length; i++) {
+    answerArray(i) = "_";
+}
+
+var remainingLetters = word.length;
+
+//Create variables to hold # of wins, losses, incorrect guesses, and guesses remaining
+var wins = 0;
+var losses = 0;
+var guessed = 0;
+var guessremaining = 15;
+
+
+//Create variables to hold references to display items 
+var anyKeyText = document.getElementById("anykey-text");
+var userChoiceText = document.getElementById("userchoice-text");
+var winsText = document.getElementById("wins-text");
+var lossesText = document.getElementById("losses-text");
+var guessedText = document.getElementById("guessed-text");
+var guessRemainingText = document.getElementById("guessremaining-text");
+
+
+//Use key events to listen for the letters the players will type
+document.onkeyup = function(event) {
+
+    var userChoice = event.key;
+
+//Game Code
+
+while (remainingLetters > 0) {
+    alert(answerArray.join(" "));
+    
+
+    //Take Player Input and Update Progress
+    for (var j = 0; j < word.length; j++) {
+        if (word[j] === userChoice) {
+            answerArray[j] = userChoice;
+            remainingLetters--;
+        }
+    }
+
+//Display
+    //Hide the directions
+    anyKeyText.textContent = "";
+
+    //Display guesses, letters remaining, wins/losses/ties
+    userChoiceText = "You chose: " + userChoice;
+    winsText = " Wins: " + wins;
+    lossesText = "Losses: " + losses;
+    guessedText = "You guessed: " + guessed;
+    guessRemainingText = "Guesses remaining: " + guessesremaining;
+}
+
+}
+
+//After the user wins/loses the game should choose another word and make the user play it
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
