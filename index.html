@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Medieval Word Game</title>
+
+    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
   </head>
 
 <body>
@@ -13,18 +19,22 @@
     <h2 id="blankWord"></h2>
     <h2 id="gameOver"></h2>
     <h2 id="youWin"></h2>
+    <h3 id="beginAgain"></h3> 
+    <button type="button" id="toggleBtn" class="btn btn-outline-success yesBtn" style="display:none;" onclick="reset()">Yes!</button>
     <p id="choice"></p>
     <p id="guessed"></p>
     <p id="guessesLeft"></p>
     <p id="wins"></p>
     <p id="losses"></p>
+
+    
 </div>
 
 <script>
 
 //insult array
     var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish", "tottering hedge-born churl", 
-                        "meddling reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",,
+                        "reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",,
                         "glos pautonnier", "cream-faced cox-comb", "crooked-nosed knave", "meddling skamelar", "mandrake mymmerkin"];
 
 //compliment array
@@ -38,15 +48,32 @@
                             "watery-bint", "coconuts", "elderberries", "european-swallow", "lancelot",
                             "sir", "majesty", "fleshwound", "sword", "holygrail"];
 
-//put this in a conditional thing when game is over
-    //turn computerchoice into a function
-    
+//create variables to hold directions & scoreboard items
+    var startText = document.getElementById("start");
+    var choiceText = document.getElementById("choice");
+    var gameOverText = document.getElementById("gameOver");
+    var youWinText = document.getElementById("youWin");
+    var guessesLeftText = document.getElementById("guessesLeft");
+    var blankWordText = document.getElementById("blankWord");
+    var winsText = document.getElementById("wins");
+    var lossesText = document.getElementById("losses");
+    var guessedText = document.getElementById("guessed");
+    var beginAgainText = document.getElementById("beginAgain")
+
+//create variable currentWord
+var currentWord = getRandomWord();
+
+//create getRandomWord function
+    function getRandomWord() {
         var word = computerChoice[Math.floor(Math.random() * computerChoice.length)];
         alert(word);
 
+        return word;
+    }
+
 //Creates the underscores 
    var secretWordArray = [];
-    for (var i = 0; i < word.length; i++) {
+    for (var i = 0; i < currentWord.length; i++) {
         secretWordArray[i] = "_";
     }
 
@@ -55,6 +82,36 @@
     var losses = 0;
     var guessed = [];
     var guessesLeft = 10;
+
+//create retrieve button variable
+var retrieveBtn = document.getElementById("toggleBtn");
+
+//make button toggle
+    function togglebutton() {
+        //make button visible
+        if (retrieveBtn.style.display === "none") {
+            retrieveBtn.style.display = "block";
+        } 
+        else {
+            retrieveBtn.style.display = "none";
+        }
+    }
+
+//when user clicks Yes button, begin new game
+    function reset() {
+        //computer chooses another word to play
+        currentWord = getRandomWord();
+        //reset scoreboard
+        guessesLeft = 0;
+        guessed = [];
+        ;
+        //hide gameOver/youWin/beginAgain text
+        gameOverText.textContent = "";
+        youWinText.textContent = "";
+        beginAgainText.textContent = "";
+        //hide button
+        togglebutton();
+    }
 
 //user starts game
     document.onkeyup = function(event) {
@@ -74,17 +131,6 @@
         }
         //if letter is correct, it reveals letter in word
         else guessed.push(userChoice);
-
-    //create variables to hold directions & scoreboard items
-        var startText = document.getElementById("start");
-        var choiceText = document.getElementById("choice");
-        var gameOverText = document.getElementById("gameOver");
-        var youWinText = document.getElementById("youWin");
-        var guessesLeftText = document.getElementById("guessesLeft");
-        var blankWordText = document.getElementById("blankWord");
-        var winsText = document.getElementById("wins");
-        var lossesText = document.getElementById("losses");
-        var guessedText = document.getElementById("guessed");
    
     //display scoreboard
         choiceText.textContent = "You chose: " + userChoice;
@@ -101,13 +147,17 @@
 
     //determine if letter is in word
         var isCorrect = false;
-        for (var i = 0; i < word.length; i++) {
-            if (word[i] === userChoice) {
+        for (var i = 0; i < currentWord.length; i++) {
+            if (currentWord[i] === userChoice) {
                 secretWordArray[i] = userChoice;
                 blankWordText.textContent = secretWordArray.join(" ");
                 isCorrect = true;
             } 
         }
+
+    //set win and loss variables
+    var hasWon = false;
+    var hasLost = false;
 
     //if word is guessed
         if (secretWordArray.indexOf('_') == -1) {
@@ -116,11 +166,9 @@
             //update wins tally
             wins++;
             winsText.textContent = "Wins: " + wins;
+            //set variable as true
+            hasWon = true;
         }
-        
- 
-    //if win or loss begin new game
-        
 
      //if letter is incorrect, it displays under incorrect guesses
         if (isCorrect === false) {
@@ -136,33 +184,28 @@
              //update losses tally
              losses++;
              lossesText.textContent = "Losses: " + losses;
+             //set variable as true
+            hasLost = true;
         }
     
-   
-   
-    //computer chooses another word to play
-
-
-
-    //switch (expression) {
-    // case x:
-        // execute case x code block
-        // break;
-    //case y:
-        // execute case y code block
-        // break;
-    //default:
-        //execute default code block
-    // }
- 
-
-
+    // when win or lose display new game message and button
+        if (hasWon || hasLost) {
+            beginAgainText.textContent = "Dost thou wish to guess another word?" 
+            togglebutton();
+        }
     
-
-
-}
+    }
+        
 
 </script>
+    
+<!-- Bootstrap JS links -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
 </body>
 </html>
 
