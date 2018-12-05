@@ -12,6 +12,7 @@
     <p id="start">Guess a letter to begin!</p>
     <h2 id="blankWord"></h2>
     <h2 id="gameOver"></h2>
+    <h2 id="youWin"></h2>
     <p id="choice"></p>
     <p id="guessed"></p>
     <p id="guessesLeft"></p>
@@ -22,7 +23,13 @@
 <script>
 
 //insult array
-    var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish"];
+    var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish", "tottering hedge-born churl", 
+                        "meddling reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",,
+                        "glos pautonnier", "cream-faced cox-comb", "crooked-nosed knave", "meddling skamelar", "mandrake mymmerkin"];
+
+//compliment array
+    var complimentArray = ["rare best-tempered wafer-cake", "brave young-eyed smilet", "sugared well-wishing welsh cheese", "gallant sweet-suggesting nose-herb",
+                            "celestial tiger-booted cukoo-bud"]
 
 //computer chooses word
     var computerChoice = ["knight", "lord", "feudal", "plague", "bishop", "religion", "witchhunt", 
@@ -32,8 +39,10 @@
                             "sir", "majesty", "fleshwound", "sword", "holygrail"];
 
 //put this in a conditional thing when game is over
-    var word = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-    alert(word);
+    //turn computerchoice into a function
+    
+        var word = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+        alert(word);
 
 //Creates the underscores 
    var secretWordArray = [];
@@ -45,7 +54,7 @@
     var wins = 0;
     var losses = 0;
     var guessed = [];
-    var guessesLeft = 15;
+    var guessesLeft = 10;
 
 //user starts game
     document.onkeyup = function(event) {
@@ -54,21 +63,23 @@
     //computer chooses insult
         var insult = insultArray[Math.floor(Math.random() * insultArray.length)];
     
+    //computer chooses compliment
+        var compliment = complimentArray[Math.floor(Math.random() * complimentArray.length)];
+    
     //tracks letters already guessed
         if (guessed.includes(userChoice)) {
-            alert("You already guessed that, thou " + insult + "!");
-            //insert random shakespearean insult on alert
+            alert("Thou hast already guessed that, thou " + insult + "!");
+            //stop this code
             return;
         }
-    
+        //if letter is correct, it reveals letter in word
         else guessed.push(userChoice);
-
-
 
     //create variables to hold directions & scoreboard items
         var startText = document.getElementById("start");
         var choiceText = document.getElementById("choice");
         var gameOverText = document.getElementById("gameOver");
+        var youWinText = document.getElementById("youWin");
         var guessesLeftText = document.getElementById("guessesLeft");
         var blankWordText = document.getElementById("blankWord");
         var winsText = document.getElementById("wins");
@@ -85,10 +96,10 @@
     //hide directions
         start.textContent = "";
 
-    //Display the underscores as a string
+    //display the underscores as a string
         blankWordText.textContent = secretWordArray.join(" ");
 
-    //code determines if letter is in word
+    //determine if letter is in word
         var isCorrect = false;
         for (var i = 0; i < word.length; i++) {
             if (word[i] === userChoice) {
@@ -98,28 +109,52 @@
             } 
         }
 
-     //if letter is incorrect, it displays under incorrect guesses & takes away a guess   
+    //if word is guessed
+        if (secretWordArray.indexOf('_') == -1) {
+            //display You Win
+            youWinText.textContent = "Thou hast won, thou " + compliment + "!";
+            //update wins tally
+            wins++;
+            winsText.textContent = "Wins: " + wins;
+        }
+        
+ 
+    //if win or loss begin new game
+        
+
+     //if letter is incorrect, it displays under incorrect guesses
         if (isCorrect === false) {
+            //take away from guess tally
             guessesLeft--;
             guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
-
         }
 
       //when guesses are 0 - tally loss
         if (guessesLeft === 0) {
-             //display Game Over
+            //display Game Over
              gameOverText.textContent = "Game Over, thou " + insult + "!";
-
+             //update losses tally
+             losses++;
+             lossesText.textContent = "Losses: " + losses;
         }
-    //create array for random shakespearean/medieval insults
-        //thou pestilent tardy-gaited clack-dish
-        //cream-faced loon
-        //fopdoodle
-        //driggle-draggle
-    //when word is guessed - tally win
-    //start game over
-    //if letter is correct, it reveals letter in word
+    
+   
+   
     //computer chooses another word to play
+
+
+
+    //switch (expression) {
+    // case x:
+        // execute case x code block
+        // break;
+    //case y:
+        // execute case y code block
+        // break;
+    //default:
+        //execute default code block
+    // }
+ 
 
 
     
