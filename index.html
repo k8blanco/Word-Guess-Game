@@ -29,17 +29,22 @@
         var guessed = 0;
         var guessesLeft = 15;
 
-    //create variables to display directions & scoreboard items
-        var startText = document.getElementById.innerHTML("start");
-        var choiceText = document.getElementById.innerHTML("choice");
-        var winsText = document.getElementById.innerHTML("wins");
-        var lossesText = document.getElementById.innerHTML("losses");
-        var guessedText = document.getElementById.innerHTML("guessed");
-        var guessesLeftText = document.getElementById.innerHTML("guessesLeft")
+    //create variables to hold directions & scoreboard items
+        var startText = document.getElementById("start");
+        var choiceText = document.getElementById("choice");
+        var winsText = document.getElementById("wins");
+        var lossesText = document.getElementById("losses");
+        var guessedText = document.getElementById("guessed");
+        var guessesLeftText = document.getElementById("guessesLeft");
 
-    //show scoreboard variables
+    //display scoreboard
+        choiceText.textContent = "You chose: " + userChoice;
+        winsText.textContent = "Wins: " + wins;
+        lossesText.textContent = "Losses: " + losses;
+        guessedText.textContent = "Guessed Letters: " + guessed;
+        guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
         
-
+    // useChoiceText.textContent = "You chose: " + userChoice;
 
 
     //hide directions
@@ -76,7 +81,8 @@
             }
         }
     //if user guesses word correctly, it tallies up as a win
-    function wins++
+   
+
     //if letter is correct, it reveals letter in word
     //if letter is incorrect, it displays under incorrect guesses & takes away a guess
     //tracks letters already guessed
@@ -96,19 +102,9 @@
 
 
 
-<!-- //Create variables to hold references to display items 
-// var start = document.getElementById("");
-// var choice = document.getElementById("userchoice-text");
-// var wins = document.getElementById("wins-text");
-// var losses = document.getElementById("losses-text");
-// var guessed = document.getElementById("guessed-text");
-// var guessesLeft = document.getElementById("guessremaining-text");
+<!-- 
 
-
-//Use key events to listen for the letters the players will type
-// document.onkeyup = function(event) {
-//     var userChoice = event.key;
-
+\
 // }
 // ---------------------------------------------------
 //  //Display scoreboard
