@@ -11,6 +11,7 @@
 <div>
     <p id="start">Guess a letter to begin!</p>
     <h2 id="blankWord"></h2>
+    <h2 id="gameOver"></h2>
     <p id="choice"></p>
     <p id="guessed"></p>
     <p id="guessesLeft"></p>
@@ -19,6 +20,9 @@
 </div>
 
 <script>
+
+//insult array
+    var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish"];
 
 //computer chooses word
     var computerChoice = ["knight", "lord", "feudal", "plague", "bishop", "religion", "witchhunt", 
@@ -46,20 +50,25 @@
 //user starts game
     document.onkeyup = function(event) {
         var userChoice = event.key;
+
+    //computer chooses insult
+        var insult = insultArray[Math.floor(Math.random() * insultArray.length)];
     
     //tracks letters already guessed
         if (guessed.includes(userChoice)) {
-            alert("you already guessed that, bum");
+            alert("You already guessed that, thou " + insult + "!");
             //insert random shakespearean insult on alert
             return;
         }
     
         else guessed.push(userChoice);
-     
+
+
 
     //create variables to hold directions & scoreboard items
         var startText = document.getElementById("start");
         var choiceText = document.getElementById("choice");
+        var gameOverText = document.getElementById("gameOver");
         var guessesLeftText = document.getElementById("guessesLeft");
         var blankWordText = document.getElementById("blankWord");
         var winsText = document.getElementById("wins");
@@ -96,8 +105,19 @@
 
         }
 
+      //when guesses are 0 - tally loss
+        if (guessesLeft === 0) {
+             //display Game Over
+             gameOverText.textContent = "Game Over, thou " + insult + "!";
 
-    //if user guesses word correctly, it tallies up as a win
+        }
+    //create array for random shakespearean/medieval insults
+        //thou pestilent tardy-gaited clack-dish
+        //cream-faced loon
+        //fopdoodle
+        //driggle-draggle
+    //when word is guessed - tally win
+    //start game over
     //if letter is correct, it reveals letter in word
     //computer chooses another word to play
 
