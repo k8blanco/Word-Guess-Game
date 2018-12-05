@@ -60,21 +60,22 @@
     var guessedText = document.getElementById("guessed");
     var beginAgainText = document.getElementById("beginAgain")
 
-//create variable currentWord
-var currentWord = getRandomWord();
+//create variable currentWord and secretWordArray 
+var currentWord;
+var secretWordArray = [];
+getRandomWord();
 
 //create getRandomWord function
     function getRandomWord() {
-        var word = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-        alert(word);
+        currentWord = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+            alert(currentWord);
 
-        return word;
-    }
-
-//Creates the underscores 
-   var secretWordArray = [];
-    for (var i = 0; i < currentWord.length; i++) {
-        secretWordArray[i] = "_";
+        //create underscores
+        for (var i = 0; i < currentWord.length; i++) {
+            secretWordArray[i] = "_";
+        }
+        //return this word to whoever called the function
+        // return word;
     }
 
 //create scoreboard variables/guessed array
@@ -99,21 +100,27 @@ var retrieveBtn = document.getElementById("toggleBtn");
 
 //when user clicks Yes button, begin new game
     function reset() {
+        alert("we are now entering the reset zone");
         //computer chooses another word to play
-        currentWord = getRandomWord();
+        getRandomWord();
         //reset scoreboard
-        guessesLeft = 0;
+        guessesLeft = 10;
         guessed = [];
-        ;
-        //hide gameOver/youWin/beginAgain text
+        //hide text
         gameOverText.textContent = "";
         youWinText.textContent = "";
         beginAgainText.textContent = "";
+        //reset text
+        guessedText.textContent = "Guessed Letters: ";
+        choiceText.textContent = "You chose: ";
+        blankWordText.textContent = secretWordArray.join(" ");
+
+        // blankWordText.textContent = "";
         //hide button
         togglebutton();
     }
 
-//user starts game
+//user starts game 
     document.onkeyup = function(event) {
         var userChoice = event.key;
 
@@ -173,7 +180,9 @@ var retrieveBtn = document.getElementById("toggleBtn");
      //if letter is incorrect, it displays under incorrect guesses
         if (isCorrect === false) {
             //take away from guess tally
-            guessesLeft--;
+            if (guessesLeft > 0) {
+                guessesLeft--
+            };
             guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
         }
 
@@ -186,6 +195,8 @@ var retrieveBtn = document.getElementById("toggleBtn");
              lossesText.textContent = "Losses: " + losses;
              //set variable as true
             hasLost = true;
+            //stop taking userinput
+
         }
     
     // when win or lose display new game message and button
