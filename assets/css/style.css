@@ -13,32 +13,59 @@ style button
 
 
 body {
-    background-image: url("assets/images/regal.png");
+    background-image: url("../images/knight.jpg");
     font-family: 'MedievalSharp', cursive;
     font-size: 28px;
     line-height: 2;
+    overflow: auto;
 }
 
-h1,
+.jumbotron {
+    opacity: 0.75;
+    background-color: #efd597;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    opacity: 1;
+    font-size: 60px;
+    font-weight: bold;
+    color: #525949;
+}
+
 h2,
 h3 {
-    font-weight: bold;
     font-size: 25px;
+    color: #525949;
+    opacity: 1;
 
 }
 
 #wrapper {
     box-sizing: border-box;
-    border-left: 1px solid #c5b2a9;
-    border-right: 1px solid #c5b2a9;
-    border-bottom: 1px solid #c5b2a9;
-    border-top: 1px solid #c5b2a9;
-    background-color: #f6f0da;
-    color:#923734;
+    background-color: #efd597;
     margin-top: 40px;
     padding: 20px;
     height: auto;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
+    opacity: 0.75;
+    text-align: center;
 
+}
+
+p {
+    opacity: 1;
+    font-size: 25px;
+}
+
+.yesBtn{
+    color: #efd597;
+    background-color: #525949;
+
+}
+
+#blankWord {
+    font-size: 60px;
 }

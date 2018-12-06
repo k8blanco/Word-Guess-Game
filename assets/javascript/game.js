@@ -1,7 +1,6 @@
 // Medieval Word Games JS
 
 
-
 //insult array
     var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish", "tottering hedge-born churl", 
                         "reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",,
@@ -58,17 +57,19 @@ var retrieveBtn = document.getElementById("toggleBtn");
 //make button toggle
     function togglebutton() {
         //make button visible
-        if (retrieveBtn.style.display === "none") {
-            retrieveBtn.style.display = "block";
+        if (retrieveBtn.style.visibility === "hidden") {
+            retrieveBtn.style.visibility = "visible";
         } 
         else {
-            retrieveBtn.style.display = "none";
+            retrieveBtn.style.visibility = "hidden";
         }
     }
 
 //when user clicks Yes button, begin new game
     function reset() {
         alert("we are now entering the reset zone");
+        //reset word array
+        secretWordArray = [];
         //computer chooses another word to play
         getRandomWord();
         //reset scoreboard
@@ -81,9 +82,8 @@ var retrieveBtn = document.getElementById("toggleBtn");
         //reset text
         guessedText.textContent = "Guessed Letters: ";
         choiceText.textContent = "You chose: ";
-        blankWordText.textContent = secretWordArray.join(" ");
+        blankWordText.textContent = secretWordArray.join(" "); //doesn't clear totally if a longer word was before
 
-        // blankWordText.textContent = "";
         //hide button
         togglebutton();
     }
