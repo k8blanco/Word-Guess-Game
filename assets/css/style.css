@@ -37,13 +37,13 @@ h1 {
     opacity: 1;
     font-size: 60px;
     font-weight: bold;
-    color: #efd597;
+    color: #ffcd00;
 }
 
 h2,
 h3 {
     font-size: 25px;
-    color: #efd597;
+    color: #ffcd00;
     opacity: 1;
 
 }
@@ -69,12 +69,12 @@ h3 {
 p {
     opacity: 1;
     font-size: 25px;
-    color: #efd597;
+    color: #ffcd00;
 }
 
 .yesBtn{
     color: #525949;
-    background-color: goldenrod;
+    background-color: #ffcd00;
     opacity: 1;
 
 }
