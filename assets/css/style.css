@@ -84,9 +84,13 @@ p {
 }
 
 .theme-button {
-
+   color: #525949;
+   background-color: #ffcd00;
+   margin-bottom: 10px;
 }
 
 .pause-button {
-    
+    color: #ffcd00;
+    background-color: #525949;
+    margin-bottom: 10px;
 }

@@ -33,12 +33,21 @@
         <div id="wrapper">
 
         <!-- Music Controls -->
-        <div id="musicControls" class="text-center">
+            <!-- <div class="row"> -->
+                <div id="musicControls" class="text-center">
+
+                <div class="col-6 mr-auto">
                 <button class="btn btn-warning btn-xs theme-button" onclick="playMusic()">
                     <span class="fa fa-music"></span> Play Theme!</button>
+                </div>
+
+                <div class="col-4 ml-auto">
                 <button class="btn btn-dark btn-xs pause-button" onclick="pauseMusic()">
                     <span class="fa fa-pause"></span> Pause Song</button>
-        </div>
+                </div>
+
+                </div>
+            <!-- </div> -->
 
             <h2 id="start">Guess a letter to begin!</h2>
             <h2 id="blankWord"></h2>
@@ -49,32 +58,29 @@
             <p id="choice"></p>
 
             <div class="row">
-            <div class="col-md-6">
-                <p id="guessed"></p>
-                <p id="guessesLeft"></p>
-            </div>
+                <div class="col-md-6">
+                    <p id="guessed"></p>
+                    <p id="guessesLeft"></p>
+                </div>
             
-             <div class="col-md-6">
-                <p id="wins"></p>
-                <p id="losses"></p>
+                <div class="col-md-6">
+                    <p id="wins"></p>
+                    <p id="losses"></p>
+                </div>
             </div>
 
         </div>
-
-    </div>
     </div>
 
-<!-- Music used under Creative Commons from:
+    </div>
+</div>
+</body>
+<!-- Theme music used under Creative Commons from:
 Minstrel by PeriTune | http://peritune.com
 Music promoted by https://www.free-stock-music.com
 Creative Commons Attribution 3.0 Unported License
 https://creativecommons.org/licenses/by/3.0/deed.en_US -->
 
-
-
-
-</div>
-</body>
 </html>
 
 <!-- JS Link -->

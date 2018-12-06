@@ -30,9 +30,9 @@
     var beginAgainText = document.getElementById("beginAgain")
 
 //create variable currentWord and secretWordArray 
-var currentWord;
-var secretWordArray = [];
-getRandomWord();
+    var currentWord;
+    var secretWordArray = [];
+    getRandomWord();
 
 //create getRandomWord function
     function getRandomWord() {
@@ -45,19 +45,34 @@ getRandomWord();
         }
     }
 
-//gets link for music
-var audioElement = document.createElement("audio");
-audioElement.setAttribute("src", "assets/sounds/minstrel.mp3");
+//gets link for music(theme) and sound effect
+    var themeMusic = document.createElement("audio");
+        themeMusic.setAttribute("src", "assets/sounds/minstrel.mp3");
+    
+    var victorySnd = document.createElement("audio");
+        victorySnd.setAttribute("src", "assets/sounds/fanfare2.wav");
+   
+    var defeatSnd = document.createElement("audio");
+        defeatSnd.setAttribute("src", "assets/sounds/error.wav");
 
-//music function
+//music(theme) function
     function playMusic() {
-        audioElement.play();
+        themeMusic.play();
     }
 
     function pauseMusic() {
-        audioElement.pause();
+        themeMusic.pause();
     }
-    
+
+//sound effect function
+    function playVictorySnd() {
+        victorySnd.play();
+    }
+
+    function playDefeatSnd() {
+        defeatSnd.play();
+    }
+
 //create scoreboard variables/guessed array
     var wins = 0;
     var losses = 0;
@@ -65,7 +80,7 @@ audioElement.setAttribute("src", "assets/sounds/minstrel.mp3");
     var guessesLeft = 10;
 
 //create retrieve button variable
-var retrieveBtn = document.getElementById("toggleBtn");
+    var retrieveBtn = document.getElementById("toggleBtn");
 
 //make button toggle
     function togglebutton() {
@@ -145,8 +160,8 @@ var retrieveBtn = document.getElementById("toggleBtn");
         }
 
     //set win and loss variables
-    var hasWon = false;
-    var hasLost = false;
+        var hasWon = false;
+        var hasLost = false;
 
     //if word is guessed
         if (secretWordArray.indexOf('_') == -1) {
@@ -180,11 +195,21 @@ var retrieveBtn = document.getElementById("toggleBtn");
             //stop taking userinput
             
         }
-    
+
     // when win or lose display new game message and button
         if (hasWon || hasLost) {
             beginAgainText.textContent = "Dost thou wish to guess another word?" 
             togglebutton();
+        }
+
+        //when user wins or loses, trigger sound
+        if (hasWon) {
+            //play victory sound
+            playVictorySnd()
+        }
+        if (hasLost) {
+            //play defeat sound
+            playDefeatSnd()
         }
     
     }
