@@ -24,7 +24,13 @@ body {
     opacity: 0.75;
     background-color: #efd597;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
+    border: solid 1px black;
+    border-image-slice: 42 42 42 42; 
+    border-image-width: 42px 42px 42px 42px; 
+    border-image-outset: 0px 0px 0px 0px; 
+    border-image-repeat: round round; 
+    border-image-source: url("https://mdn.mozillademos.org/files/6017/border-image-6.svg");
 }
 
 h1 {
@@ -43,16 +49,21 @@ h3 {
 }
 
 #wrapper {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     background-color: #efd597;
     margin-top: 40px;
-    padding: 20px;
+    padding: 40px;
     height: auto;
     font-size: 20px;
     font-weight: normal;
     opacity: 0.75;
     text-align: center;
-
+    border: solid 1px black;
+    border-image-slice: 42 42 42 42; 
+    border-image-width: 42px 42px 42px 42px; 
+    border-image-outset: 0px 0px 0px 0px; 
+    border-image-repeat: round round; 
+    border-image-source: url("https://mdn.mozillademos.org/files/6017/border-image-6.svg");
 }
 
 p {
