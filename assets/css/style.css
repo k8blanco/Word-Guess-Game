@@ -15,13 +15,15 @@ style button
 body {
     background-image: url("assets/images/regal.png");
     font-family: 'MedievalSharp', cursive;
-    font-size: 20px;
+    font-size: 28px;
     line-height: 2;
 }
 
 h1,
 h2,
 h3 {
+    font-weight: bold;
+    font-size: 25px;
 
 }
 
@@ -31,12 +33,12 @@ h3 {
     border-right: 1px solid #c5b2a9;
     border-bottom: 1px solid #c5b2a9;
     border-top: 1px solid #c5b2a9;
-    background-color: #ffffff;
-    color: #bec5c3;
+    background-color: #f6f0da;
+    color:#923734;
     margin-top: 40px;
-    padding: 10px;
+    padding: 20px;
     height: auto;
     font-size: 16px;
     font-weight: normal;
-    color: darkgray;
+
 }
