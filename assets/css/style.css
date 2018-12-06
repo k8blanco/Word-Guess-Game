@@ -2,16 +2,41 @@
 
 *
 
-/* .toggle-content {
-    display: none;
+/* 
+div container
+font - user input, headings
+center
+make responsive
+style button
+*/
+
+
+
+body {
+    background-image: url("assets/images/regal.png");
+    font-family: 'MedievalSharp', cursive;
+    font-size: 20px;
+    line-height: 2;
 }
 
-.toggle-content.is-visible {
-    display: block;
-} */
-/* 
-.yesBtn {
-    display: none;
-} */
+h1,
+h2,
+h3 {
 
+}
 
+#wrapper {
+    box-sizing: border-box;
+    border-left: 1px solid #c5b2a9;
+    border-right: 1px solid #c5b2a9;
+    border-bottom: 1px solid #c5b2a9;
+    border-top: 1px solid #c5b2a9;
+    background-color: #ffffff;
+    color: #bec5c3;
+    margin-top: 40px;
+    padding: 10px;
+    height: auto;
+    font-size: 16px;
+    font-weight: normal;
+    color: darkgray;
+}
