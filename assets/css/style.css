@@ -22,7 +22,7 @@ body {
 
 .jumbotron {
     opacity: 0.75;
-    background-color: #efd597;
+    background-color: #525949;
     text-align: center;
     padding: 40px;
     border: solid 1px black;
@@ -37,20 +37,20 @@ h1 {
     opacity: 1;
     font-size: 60px;
     font-weight: bold;
-    color: #525949;
+    color: #efd597;
 }
 
 h2,
 h3 {
     font-size: 25px;
-    color: #525949;
+    color: #efd597;
     opacity: 1;
 
 }
 
 #wrapper {
     /* box-sizing: border-box; */
-    background-color: #efd597;
+    background-color: #525949;
     margin-top: 40px;
     padding: 40px;
     height: auto;
@@ -69,11 +69,13 @@ h3 {
 p {
     opacity: 1;
     font-size: 25px;
+    color: #efd597;
 }
 
 .yesBtn{
-    color: #efd597;
-    background-color: #525949;
+    color: #525949;
+    background-color: goldenrod;
+    opacity: 1;
 
 }
 
