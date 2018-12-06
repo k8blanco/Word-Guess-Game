@@ -45,6 +45,19 @@ getRandomWord();
         }
     }
 
+//gets link for music
+var audioElement = document.createElement("audio");
+audioElement.setAttribute("src", "assets/sounds/minstrel.mp3");
+
+//music function
+    function playMusic() {
+        audioElement.play();
+    }
+
+    function pauseMusic() {
+        audioElement.pause();
+    }
+    
 //create scoreboard variables/guessed array
     var wins = 0;
     var losses = 0;
@@ -64,7 +77,7 @@ var retrieveBtn = document.getElementById("toggleBtn");
             retrieveBtn.style.visibility = "hidden";
         }
     }
-
+  
 //when user clicks Yes button, begin new game
     function reset() {
         alert("we are now entering the reset zone");
@@ -87,6 +100,7 @@ var retrieveBtn = document.getElementById("toggleBtn");
         //hide button
         togglebutton();
     }
+
 
 //user starts game 
     document.onkeyup = function(event) {

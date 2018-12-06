@@ -16,7 +16,7 @@
 
 <!-- Display Text -->
 
-
+<!-- Create Container and Jumbotron -->
 <div class="container">
     <div class="row">
     <div class="col-md-12">
@@ -26,10 +26,19 @@
     </div>
     </div>
 
+<!-- Game Text -->
     <div class="row">
     <div class="col-md-12">
    
         <div id="wrapper">
+
+        <!-- Music Controls -->
+        <div id="musicControls" class="text-center">
+                <button class="btn btn-warning btn-xs theme-button" onclick="playMusic()">
+                    <span class="fa fa-music"></span> Play Theme!</button>
+                <button class="btn btn-dark btn-xs pause-button" onclick="pauseMusic()">
+                    <span class="fa fa-pause"></span> Pause Song</button>
+        </div>
 
             <h2 id="start">Guess a letter to begin!</h2>
             <h2 id="blankWord"></h2>
@@ -45,19 +54,21 @@
                 <p id="guessesLeft"></p>
             </div>
             
-            
-            <div class="col-md-6">
+             <div class="col-md-6">
                 <p id="wins"></p>
                 <p id="losses"></p>
             </div>
-            
 
         </div>
 
     </div>
     </div>
 
-
+<!-- Music used under Creative Commons from:
+Minstrel by PeriTune | http://peritune.com
+Music promoted by https://www.free-stock-music.com
+Creative Commons Attribution 3.0 Unported License
+https://creativecommons.org/licenses/by/3.0/deed.en_US -->
 
 
 
