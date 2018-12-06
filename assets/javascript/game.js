@@ -3,7 +3,7 @@
 
 //insult array
     var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish", "tottering hedge-born churl", 
-                        "reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",,
+                        "reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",
                         "glos pautonnier", "cream-faced cox-comb", "crooked-nosed knave", "meddling skamelar", "mandrake mymmerkin"];
 
 //compliment array
@@ -50,10 +50,10 @@
         themeMusic.setAttribute("src", "assets/sounds/minstrel.mp3");
     
     var victorySnd = document.createElement("audio");
-        victorySnd.setAttribute("src", "assets/sounds/fanfare2.wav");
+        victorySnd.setAttribute("src", "assets/sounds/ecentric.wav");
    
     var defeatSnd = document.createElement("audio");
-        defeatSnd.setAttribute("src", "assets/sounds/error.wav");
+        defeatSnd.setAttribute("src", "assets/sounds/hamster.wav");
 
 //music(theme) function
     function playMusic() {
