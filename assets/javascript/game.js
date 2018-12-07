@@ -29,8 +29,6 @@
     var guessedText = document.getElementById("guessed");
     var beginAgainText = document.getElementById("beginAgain")
 
-//create variable to limit keyboard input to alpha
-    // var keyPress
 
 //create variable to block input
     var blockInput = false;
@@ -56,13 +54,13 @@
         themeMusic.setAttribute("src", "assets/sounds/minstrel.mp3");
     
     var victorySnd = document.createElement("audio");
-        victorySnd.setAttribute("src", "assets/sounds/ecentric.wav");
+        victorySnd.setAttribute("src", "assets/sounds/fanfare2.wav");
    
     var defeatSnd = document.createElement("audio");
         defeatSnd.setAttribute("src", "assets/sounds/hamster.wav");
 
     var errorSnd = document.createElement("audio");
-        errorSnd.setAttribute("src", "asssets/sounds/ni.wav");
+        errorSnd.setAttribute("src", "assets/sounds/ni.wav");
 
 //music(theme) function
     function playMusic() {
@@ -129,6 +127,19 @@
             togglebutton();
     }
 
+//function to determine if alpha
+    function isAlpha(event) {
+        var keyNum = event.which || event.keyCode;
+
+        if (keyNum >= 65 && keyNum <= 90) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
 
 //user starts game 
     document.onkeyup = function(event) {
@@ -137,9 +148,11 @@
                 //short circuit for blocking input until user clicks button
                 return;
             }
-            // if (inputtxt.value.match(letters))
-            // }
-        
+            //call is it Alpha? function; if not alpha, byebye
+            if (!isAlpha(event)){
+                return;
+            }
+            
     //computer chooses insult
         var insult = insultArray[Math.floor(Math.random() * insultArray.length)];
     
@@ -148,8 +161,8 @@
     
     //tracks letters already guessed
         if (guessed.includes(userChoice)) {
-            alert("Thou hast already guessed that, thou " + insult + "!");
             playErrorSnd();
+            alert("Thou hast already guessed that, thou " + insult + "!");
         //stop this code
             return;
         }
