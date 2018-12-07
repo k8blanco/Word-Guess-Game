@@ -1,6 +1,7 @@
 // Medieval Word Games JS
 
 
+
 //insult array
     var insultArray = ["fopdoodle", "driggle-draggle", "cream-faced loon", "tardy-gaited clack-dish", "tottering hedge-born churl", 
                         "reeling-ripe incontinent varlet", "frothy half-faced foot-licker", "wayward flap-dragon", "spur-galled canker blossom",
@@ -14,8 +15,9 @@
     var computerChoice = ["knight", "lord", "feudal", "plague", "bishop", "religion", "witchhunt", 
                             "inquisition", "peasant", "witch", "camelot", "arthur", "druid",
                             "merlin", "wizard", "morgana", "goblet", "poison", "borgias", "dragon", 
-                            "coconuts", "elderberries", "lancelot",
-                            "sir", "majesty", "fleshwound", "sword", "holygrail"];
+                            "coconuts", "elderberries", "lancelot", "cholera", "shrubbery", "avalon",
+                            "sir", "majesty", "fleshwound", "sword", "holygrail", "famine", "pestilence",
+                            "illiterate", "chivalry", "troubadour", "fief", "monk", ];
 
 //create variables to hold directions & scoreboard items
     var startText = document.getElementById("start");
@@ -41,7 +43,6 @@
 //create getRandomWord function
     function getRandomWord() {
         currentWord = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-        alert(currentWord);
 
         //create underscores
             for (var i = 0; i < currentWord.length; i++) {
