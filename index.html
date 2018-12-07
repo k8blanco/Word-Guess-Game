@@ -18,37 +18,33 @@
 
 <!-- Create Container and Jumbotron -->
 <div class="container">
-    <div class="row">
-    <div class="col-md-12">
-        <div class="jumbotron">
-            <h1 class="display-4">Medieval Word Game</h1>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="display-4">Medieval Word Game</h1>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
 
     <!-- Game Text -->
     <div id="wrapper">
-        <div class="row">
-        <div class="col-md-12">
-   
 
         <!-- Music Controls -->
-            <!-- <div class="row"> -->
-                <div id="musicControls" class="text-center">
-
-                <div class="col-6 mr-auto">
-                <button class="btn btn-warning btn-xs theme-button" onclick="playMusic()">
-                    <span class="fa fa-music"></span> Play Theme!</button>
+        <div class="row">
+                <div class="col-md-2">
+                        <button class="btn btn-warning btn-xs theme-button" onclick="playMusic()">
+                        <span class="fa fa-music"></span> Play Theme!</button>
                 </div>
 
-                <div class="col-4 ml-auto">
-                <button class="btn btn-dark btn-xs pause-button" onclick="pauseMusic()">
-                    <span class="fa fa-pause"></span> Pause Song</button>
+                
+                <div class="col-md-2 offset-md-8">
+                        <button class="btn btn-dark btn-xs pause-button" onclick="pauseMusic()">
+                        <span class="fa fa-pause"></span> Pause Theme</button>
                 </div>
-
-                </div>
-            <!-- </div> -->
-
+        </div>
+        
+            <!-- Game Text, Yes Button-->
             <h2 id="start">Guess a letter to begin!</h2>
             <h2 id="blankWord"></h2>
             <h2 id="gameOver"></h2>
@@ -69,11 +65,9 @@
                 </div>
             </div>
 
-        </div>
-        </div>  
     </div>
+</div>  
 
-</div>
 </body>
 <!--Special thanks to Monty Python and Chris Lundie for
     the wonderful sound effects provided by their 

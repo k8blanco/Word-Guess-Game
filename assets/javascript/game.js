@@ -30,17 +30,10 @@
     var beginAgainText = document.getElementById("beginAgain")
 
 //create variable to limit keyboard input to alpha
-    var invalidChars
-
-//function to restrict keyboard input to alpha
-// function checkInput
-//     if invalidChars =
+    // var keyPress
 
 //create variable to block input
     var blockInput = false;
-
-//restrict character input after game lost/won
-
 
 //create variable currentWord and secretWordArray 
     var currentWord;
@@ -69,7 +62,7 @@
         defeatSnd.setAttribute("src", "assets/sounds/hamster.wav");
 
     var errorSnd = document.createElement("audio");
-        errorSnd.setAttribute("src", "asssets/sounds/error.wav");
+        errorSnd.setAttribute("src", "asssets/sounds/ni.wav");
 
 //music(theme) function
     function playMusic() {
@@ -144,6 +137,8 @@
                 //short circuit for blocking input until user clicks button
                 return;
             }
+            // if (inputtxt.value.match(letters))
+            // }
         
     //computer chooses insult
         var insult = insultArray[Math.floor(Math.random() * insultArray.length)];
@@ -155,9 +150,8 @@
         if (guessed.includes(userChoice)) {
             alert("Thou hast already guessed that, thou " + insult + "!");
             playErrorSnd();
-
         //stop this code
-        return;
+            return;
         }
     //if letter is correct, it reveals letter in word
         else guessed.push(userChoice);
