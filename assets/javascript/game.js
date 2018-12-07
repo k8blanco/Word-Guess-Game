@@ -29,6 +29,19 @@
     var guessedText = document.getElementById("guessed");
     var beginAgainText = document.getElementById("beginAgain")
 
+//create variable to limit keyboard input to alpha
+    var invalidChars
+
+//function to restrict keyboard input to alpha
+// function checkInput
+//     if invalidChars =
+
+//create variable to block input
+    var blockInput = false;
+
+//restrict character input after game lost/won
+
+
 //create variable currentWord and secretWordArray 
     var currentWord;
     var secretWordArray = [];
@@ -37,12 +50,12 @@
 //create getRandomWord function
     function getRandomWord() {
         currentWord = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-            alert(currentWord);
+        alert(currentWord);
 
         //create underscores
-        for (var i = 0; i < currentWord.length; i++) {
-            secretWordArray[i] = "_";
-        }
+            for (var i = 0; i < currentWord.length; i++) {
+                secretWordArray[i] = "_";
+            }
     }
 
 //gets link for music(theme) and sound effect
@@ -54,6 +67,9 @@
    
     var defeatSnd = document.createElement("audio");
         defeatSnd.setAttribute("src", "assets/sounds/hamster.wav");
+
+    var errorSnd = document.createElement("audio");
+        errorSnd.setAttribute("src", "asssets/sounds/error.wav");
 
 //music(theme) function
     function playMusic() {
@@ -73,6 +89,10 @@
         defeatSnd.play();
     }
 
+    function playErrorSnd() {
+        errorSnd.play();
+    }
+
 //create scoreboard variables/guessed array
     var wins = 0;
     var losses = 0;
@@ -85,42 +105,46 @@
 //make button toggle
     function togglebutton() {
         //make button visible
-        if (retrieveBtn.style.visibility === "hidden") {
-            retrieveBtn.style.visibility = "visible";
-        } 
-        else {
-            retrieveBtn.style.visibility = "hidden";
-        }
+            if (retrieveBtn.style.visibility === "hidden") {
+                retrieveBtn.style.visibility = "visible";
+            } 
+            else {
+                retrieveBtn.style.visibility = "hidden";
+            }
     }
   
 //when user clicks Yes button, begin new game
     function reset() {
-        alert("we are now entering the reset zone");
         //reset word array
-        secretWordArray = [];
+            secretWordArray = [];
         //computer chooses another word to play
-        getRandomWord();
+            getRandomWord();
         //reset scoreboard
-        guessesLeft = 10;
-        guessed = [];
+            guessesLeft = 10;
+            guessed = [];
         //hide text
-        gameOverText.textContent = "";
-        youWinText.textContent = "";
-        beginAgainText.textContent = "";
+            gameOverText.textContent = "";
+            youWinText.textContent = "";
+            beginAgainText.textContent = "";
         //reset text
-        guessedText.textContent = "Guessed Letters: ";
-        choiceText.textContent = "You chose: ";
-        blankWordText.textContent = secretWordArray.join(" "); //doesn't clear totally if a longer word was before
-
+            guessedText.textContent = "Guessed Letters: ";
+            choiceText.textContent = "You chose: ";
+            blankWordText.textContent = secretWordArray.join(" "); 
+        //allow input
+            blockInput = false;
         //hide button
-        togglebutton();
+            togglebutton();
     }
 
 
 //user starts game 
     document.onkeyup = function(event) {
         var userChoice = event.key;
-
+            if (blockInput) {
+                //short circuit for blocking input until user clicks button
+                return;
+            }
+        
     //computer chooses insult
         var insult = insultArray[Math.floor(Math.random() * insultArray.length)];
     
@@ -130,10 +154,12 @@
     //tracks letters already guessed
         if (guessed.includes(userChoice)) {
             alert("Thou hast already guessed that, thou " + insult + "!");
-            //stop this code
-            return;
+            playErrorSnd();
+
+        //stop this code
+        return;
         }
-        //if letter is correct, it reveals letter in word
+    //if letter is correct, it reveals letter in word
         else guessed.push(userChoice);
    
     //display scoreboard
@@ -166,32 +192,32 @@
     //if word is guessed
         if (secretWordArray.indexOf('_') == -1) {
             //display You Win
-            youWinText.textContent = "Thou hast won, thou " + compliment + "!";
+                youWinText.textContent = "Thou hast won, thou " + compliment + "!";
             //update wins tally
-            wins++;
-            winsText.textContent = "Wins: " + wins;
+                wins++;
+                winsText.textContent = "Wins: " + wins;
             //set variable as true
-            hasWon = true;
+                hasWon = true;
         }
 
      //if letter is incorrect, it displays under incorrect guesses
         if (isCorrect === false) {
             //take away from guess tally
-            if (guessesLeft > 0) {
+                if (guessesLeft > 0) {
                 guessesLeft--
-            };
-            guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
+                };
+                guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
         }
 
       //when guesses are 0 - tally loss
         if (guessesLeft === 0) {
             //display Game Over
-             gameOverText.textContent = "Game Over, thou " + insult + "!";
+                gameOverText.textContent = "Game Over, thou " + insult + "!";
              //update losses tally
-             losses++;
-             lossesText.textContent = "Losses: " + losses;
+                losses++;
+                lossesText.textContent = "Losses: " + losses;
              //set variable as true
-            hasLost = true;
+                hasLost = true;
             //stop taking userinput
             
         }
@@ -200,16 +226,19 @@
         if (hasWon || hasLost) {
             beginAgainText.textContent = "Dost thou wish to guess another word?" 
             togglebutton();
+            blockInput = true;
+            //stop keyboard input
+
         }
 
         //when user wins or loses, trigger sound
         if (hasWon) {
             //play victory sound
-            playVictorySnd()
+                playVictorySnd()
         }
         if (hasLost) {
             //play defeat sound
-            playDefeatSnd()
+                playDefeatSnd()
         }
     
     }
